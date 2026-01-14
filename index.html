@@ -483,7 +483,7 @@
 
                     <div class="form-group">
                         <label for="whatsapp">Nomor WhatsApp Aktif</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="085229162517" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="085123456789" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                     </div>
 
                     <div class="form-group">
@@ -542,7 +542,7 @@
                 const text = `Halo Admin, saya mau pesan promo *RatKiller Pro* dong.%0A%0ABerikut data saya:%0A👤 Nama: *${nama}*%0A📱 No WA: *${whatsapp}*%0A🏠 Alamat: ${alamat}%0A📦 Pesanan: *${jumlah}*%0A%0ATolong segera diproses ya, bisa COD kan? Terima kasih.`;
 
                 // PENTING: GANTI NOMOR HP DI BAWAH INI DENGAN NOMOR CS ANDA (Pakai kode negara 62, tanpa + atau 0 di depan)
-                const nomorCS = "628123456789";
+                const nomorCS = "6285229162517";
 
                 // Buka WhatsApp
                 window.location.href = `https://wa.me/${nomorCS}?text=${text}`;
@@ -562,4 +562,5 @@
 
 
 </html>
+
 
