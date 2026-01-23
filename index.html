@@ -3,568 +3,647 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>RatKiller Pro - Pembasmi Tikus Ampuh</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAT KILLER - Pembasmi Tikus Ampuh</title>
     <style>
-        /* --- CSS STYLING --- */
-        
-         :root {
-            --primary: #d32f2f;
-            /* Merah untuk urgensi */
-            --secondary: #212121;
-            /* Hitam elegan */
-            --accent: #fbc02d;
-            /* Kuning untuk tombol/highlight */
-            --light: #f5f5f5;
-            --text: #333;
-            --wa-green: #25D366;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: var(--light);
-            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            overflow-x: hidden;
+            color: #333;
         }
         
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        /* Container */
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-            position: relative;
-        }
-        /* Header / Hero */
-        
-        header {
-            /* GANTI BACKGROUND HEADER DI SINI */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1200x600/555/fff?text=Background+Rumah+Bersih');
-            background-size: cover;
-            background-position: center;
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            padding: 80px 20px;
             text-align: center;
-            padding: 80px 20px 100px 20px;
-            /* Padding bawah lebih besar untuk gelombang */
         }
         
-        header h1 {
-            font-size: 2.5rem;
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .header p {
+            font-size: 1.3em;
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+        }
+        
+        .promo-badge {
+            background: white;
+            color: #333;
+            padding: 25px 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes blink {
+            0%,
+            50%,
+            100% {
+                opacity: 1;
+            }
+            25%,
+            75% {
+                opacity: 0.3;
+            }
+        }
+        
+        .promo-text {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            animation: blink 1.5s infinite;
+        }
+        
+        .promo-offer {
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff6b6b;
             margin-bottom: 15px;
-            text-transform: uppercase;
-            font-weight: 800;
-            color: var(--accent);
-            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
         
-        header p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .btn-cta {
-            background-color: var(--primary);
+        .promo-button {
+            display: inline-block;
+            background: #ff0000;
             color: white;
-            padding: 15px 30px;
+            padding: 15px 50px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            transition: 0.3s;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
-            border: 2px solid var(--primary);
-            cursor: pointer;
-            animation: pulse 2s infinite;
+            font-size: 1.1em;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.4);
         }
         
-        .btn-cta:hover {
-            background-color: transparent;
-            color: var(--primary);
-            transform: translateY(-2px);
+        .promo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.6);
+            background: #dd0000;
         }
         
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(211, 47, 47, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(211, 47, 47, 0);
-            }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        /* Sections */
         
-        section {
+        .section {
             padding: 60px 20px;
         }
         
-        h2 {
+        .section-title {
             text-align: center;
+            font-size: 2.5em;
             margin-bottom: 40px;
-            color: var(--secondary);
-            font-size: 2rem;
-            position: relative;
-            padding-bottom: 15px;
+            color: #667eea;
         }
-        
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary);
-        }
-        /* Feature Cards */
         
         .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 25px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .feature-card {
             background: white;
-            padding: 30px 20px;
-            border-radius: 15px;
-            width: calc(33.333% - 25px);
-            min-width: 280px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: 0.3s;
-            border-bottom: 3px solid transparent;
+            transition: transform 0.3s;
         }
         
         .feature-card:hover {
-            transform: translateY(-10px);
-            border-bottom-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         
         .feature-icon {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
+            font-size: 3em;
+            margin-bottom: 20px;
         }
-        /* Product Showcase Section */
         
-        .product-showcase {
+        .products {
+            background: #f8f9fa;
+        }
+        
+        .product-single {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .product-card-single {
             background: white;
-        }
-        
-        .main-product-img {
-            width: 100%;
-            max-width: 700px;
-            display: block;
-            margin: 0 auto 20px auto;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-            border: 4px solid white;
-        }
-        
-        .product-thumbnails {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-        
-        .thumb-img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
             border-radius: 10px;
-            border: 2px solid #ddd;
-            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 40px;
         }
         
-        .thumb-img:hover {
-            border-color: var(--primary);
-        }
-        /* Testimonials (WA Style) */
-        
-        .testimonials-section {
-            background-color: #f0f2f5;
-            /* Warna background WA */
-            position: relative;
-        }
-        
-        .wa-header-decoration {
-            background: var(--wa-green);
-            height: 100px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 0;
-        }
-        
-        .testimonials-section .container {
-            z-index: 1;
-        }
-        
-        .wa-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .product-images {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 30px;
         }
         
-        .wa-screenshot {
-            width: 100%;
-            max-width: 300px;
-            /* Ukuran lebar HP pada umumnya */
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border: 4px solid #fff;
-            transition: transform 0.3s;
+        .product-image {
+            height: 200px;
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4em;
+            border-radius: 10px;
+            overflow: hidden;
         }
         
-        .wa-screenshot:hover {
-            transform: scale(1.02);
+        .product-info {
+            padding: 20px;
         }
-        /* Form Section */
+        
+        .product-name {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        .product-price {
+            font-size: 1.8em;
+            color: #764ba2;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .testimonials {
+            background: white;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 0;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+            overflow: hidden;
+        }
+        
+        .whatsapp-header {
+            background: #075e54;
+            color: white;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .whatsapp-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #25d366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            margin-right: 12px;
+            overflow: hidden;
+        }
+        
+        .whatsapp-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .whatsapp-info h4 {
+            margin: 0;
+            font-size: 1em;
+        }
+        
+        .whatsapp-info p {
+            margin: 0;
+            font-size: 0.8em;
+            opacity: 0.8;
+        }
+        
+        .whatsapp-body {
+            padding: 20px;
+            background: #ece5dd;
+            min-height: 150px;
+        }
+        
+        .whatsapp-message {
+            background: white;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            position: relative;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        
+        .whatsapp-message::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 10px;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 8px 8px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .whatsapp-time {
+            font-size: 0.7em;
+            color: #667781;
+            text-align: right;
+            margin-top: 5px;
+        }
         
         .order-section {
-            background: linear-gradient(135deg, var(--primary), #b71c1c);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
         }
         
-        .order-section h2 {
-            color: white;
-        }
-        
-        .order-section h2::after {
-            background: white;
-        }
-        
-        .form-box {
+        .order-form {
+            max-width: 600px;
+            margin: 0 auto;
             background: white;
             padding: 40px;
-            max-width: 550px;
-            margin: 0 auto;
-            border-radius: 20px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            color: var(--text);
+            border-radius: 10px;
+            color: #333;
         }
         
         .form-group {
             margin-bottom: 20px;
         }
         
-        label {
+        .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 700;
-            font-size: 0.9rem;
+            font-weight: bold;
+            color: #667eea;
         }
         
-        input,
-        textarea,
-        select {
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .submit-btn {
             width: 100%;
             padding: 15px;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: 0.3s;
-            background: #fdfdfd;
-        }
-        
-        input:focus,
-        textarea:focus,
-        select:focus {
-            border-color: var(--primary);
-            outline: none;
-            background: white;
-        }
-        
-        .price-tag {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 20px;
-            background: #fff0f0;
-            border-radius: 15px;
-            border: 2px dashed var(--primary);
-        }
-        
-        .price-old {
-            text-decoration: line-through;
-            color: #888;
-            font-size: 1.3rem;
-        }
-        
-        .price-new {
-            color: var(--primary);
-            font-size: 3rem;
-            font-weight: 900;
-            line-height: 1;
-            display: block;
-            margin: 10px 0;
-        }
-        
-        .stock-alert {
-            color: #d32f2f;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2em;
             font-weight: bold;
-            background: #ffcdd2;
-            display: inline-block;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
+            cursor: pointer;
+            transition: transform 0.2s;
         }
         
-        footer {
+        .submit-btn:hover {
+            transform: scale(1.02);
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
             text-align: center;
             padding: 30px 20px;
-            background: var(--secondary);
-            color: #aaa;
-            font-size: 0.9rem;
         }
-        /* Loading Spinner */
-        
-        .loader {
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin 1s linear infinite;
-            display: none;
-            margin: 20px auto 0;
-        }
-        
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-        /* Mobile Adjustments */
         
         @media (max-width: 768px) {
-            header {
-                padding-top: 60px;
+            .header h1 {
+                font-size: 2em;
             }
-            header h1 {
-                font-size: 2rem;
+            .header {
+                padding: 50px 20px;
+            }
+            .header p {
+                font-size: 1.1em;
+            }
+            .promo-badge {
+                padding: 20px 25px;
+                margin: 0 20px;
+            }
+            .promo-text {
+                font-size: 1em;
+            }
+            .promo-offer {
+                font-size: 1.6em;
+            }
+            .promo-button {
+                padding: 12px 40px;
+                font-size: 1em;
+            }
+            .section {
+                padding: 40px 15px;
+            }
+            .section-title {
+                font-size: 1.8em;
+                margin-bottom: 30px;
+            }
+            .features {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             .feature-card {
-                width: 100%;
-            }
-            .btn-cta {
-                width: 100%;
-                text-align: center;
-                padding: 15px;
-            }
-            .thumb-img {
-                width: 80px;
-                height: 80px;
-            }
-            .form-box {
                 padding: 25px;
             }
-            .price-new {
-                font-size: 2.5rem;
+            .product-card-single {
+                padding: 25px;
+            }
+            .product-images {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            .product-image {
+                height: 150px;
+                font-size: 3em;
+            }
+            .product-name {
+                font-size: 1.3em;
+            }
+            .product-price {
+                font-size: 1.5em;
+            }
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .whatsapp-header {
+                padding: 12px;
+            }
+            .whatsapp-avatar {
+                width: 35px;
+                height: 35px;
+                font-size: 1.2em;
+            }
+            .whatsapp-body {
+                padding: 15px;
+            }
+            .order-form {
+                padding: 25px 20px;
+                margin: 0 15px;
+            }
+            .form-group {
+                margin-bottom: 15px;
+            }
+            .form-group label {
+                font-size: 0.95em;
+            }
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 10px;
+                font-size: 0.95em;
+            }
+            .submit-btn {
+                padding: 12px;
+                font-size: 1.1em;
+            }
+            .footer {
+                padding: 25px 15px;
+                font-size: 0.9em;
             }
         }
     </style>
 </head>
 
 <body>
-
-    <header>
-        <div class="container">
-            <h1>Rumah Bersih, Bebas Tikus Dalam Semalam!</h1>
-            <p>Solusi ampuh membasmi koloni tikus sampai ke sarangnya. Mati kering, tidak bau, dan sangat mudah digunakan oleh siapa saja.</p>
-            <a href="#order" class="btn-cta">PROMO!! BELI 1 GRATIS 1</a>
+    <div class="header">
+        <h1>🐀 RAT KILLER</h1>
+        <p>Solusi Ampuh Membasmi Tikus - Aman, Efektif, dan Terpercaya!</p>
+        <div class="promo-badge">
+            <div class="promo-text">🎉 PROMO SPESIAL 🎉</div>
+            <div class="promo-offer">BELI 1 GRATIS 1</div>
+            <a href="#order" class="promo-button">PESAN SEKARANG!</a>
         </div>
-    </header>
+    </div>
 
-    <section>
-        <div class="container">
-            <h2>Kenapa Tikus Takut RatKiller Pro?</h2>
+    <div class="container">
+        <section class="section">
+            <h2 class="section-title">Kenapa Memilih RAT KILLER?</h2>
             <div class="features">
                 <div class="feature-card">
                     <div class="feature-icon">⚡</div>
-                    <h3>Reaksi Super Cepat</h3>
-                    <p>Formula baru yang lebih agresif. Tikus memakan umpan dan efek bekerja dalam hitungan jam.</p>
+                    <h3>Reaksi Cepat</h3>
+                    <p>Bekerja dalam waktu singkat untuk membasmi tikus dengan efektif</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">💨</div>
-                    <h3>Mati Kering & Tidak Bau</h3>
-                    <p>Teknologi pengering membuat bangkai tikus cepat kering sehingga tidak menimbulkan bau busuk.</p>
+                    <div class="feature-icon">✅</div>
+                    <h3>Aman Digunakan</h3>
+                    <p>Formula yang aman untuk lingkungan rumah dan keluarga Anda</p>
                 </div>
                 <div class="feature-card">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Praktis Siap Pakai</h3>
-                    <p>Bentuk kotak padat. Tinggal taruh di jalur tikus. Tidak perlu repot campur makanan lain.</p>
+                    <div class="feature-icon">💪</div>
+                    <h3>Ampuh & Efektif</h3>
+                    <p>Terbukti membasmi tikus hingga tuntas tanpa residu berbahaya</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Harga Terjangkau</h3>
+                    <p>Solusi ekonomis untuk masalah tikus di rumah atau kantor Anda</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="product-showcase">
-        <div class="container">
-            <h2>Detail Produk & Cara Pakai</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Kemasan aman dan kualitas terjamin.</p>
-
-            <img src="Gambar/Gemini_Generated_Image_cz1gntcz1gntcz1g.png" alt="RatKiller Pro Kemasan Asli" class="main-product-img">
-
-            <div class="product-thumbnails">
-                <img src="Gambar/mzkq13g961rmw0cvnktbdvzwhg.png">
-
+        <section class="section products">
+            <h2 class="section-title">Produk Kami</h2>
+            <div class="product-single">
+                <div class="product-card-single">
+                    <div class="product-info">
+                        <h3 class="product-name">RAT KILLER - Pembasmi Tikus Ampuh</h3>
+                        <p>Solusi efektif untuk membasmi tikus di rumah, toko, gudang, atau kantor Anda. Formula khusus yang aman dan terbukti ampuh!</p>
+                        <p class="product-price">Rp 75.000</p>
+                        <p><strong>Isi:</strong> 10 sachet @ 20g</p>
+                    </div>
+                    <div class="product-images">
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Produk+1" alt="Produk 1" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/400x300/764ba2/ffffff?text=Produk+2" alt="Produk 2" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                        <div class="product-image">
+                            <img src="https://via.placeholder.com/400x300/667eea/ffffff?text=Produk+3" alt="Produk 3" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                        </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <div style="text-align: center; max-width: 700px; margin: 40px auto 0; background: #fff3e0; padding: 20px; border-radius: 10px;">
-                <h3 style="margin-bottom: 15px; color: #e65100;">Cara Penggunaan Sangat Mudah:</h3>
-                <ol style="text-align: left; display: inline-block; font-weight: 600;">
-                    <li>Gunakan sarung tangan/kantong plastik saat mengambil umpan.</li>
-                    <li>Letakkan 3-4 butir di sudut yang sering dilalui tikus.</li>
-                    <li>Tikus akan memakannya, merasa haus, mencari air keluar rumah, dan mati kering.</li>
-                </ol>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials-section">
-        <div class="wa-header-decoration"></div>
-        <div class="container">
-            <h2 style="color: var(--secondary);">Bukti Nyata Pelanggan Kami</h2>
-            <p style="text-align: center; position: relative; z-index: 2; color: #555;">Real testimoni dari chat WhatsApp pelanggan yang sudah membuktikan ampuhnya RatKiller Pro.</p>
-
-            <div class="wa-grid">
-                <img src="Gambar/Testi1.png" alt="Testimoni WhatsApp 1" class="wa-screenshot">
-
-                <img src="Gambar/Testi2.png" alt="Testimoni WhatsApp 2" class="wa-screenshot">
-
-                <img src="Gambar/Testi1.png" alt="Testimoni WhatsApp 3" class="wa-screenshot">
-            </div>
-        </div>
-    </section>
-
-    <section id="order" class="order-section">
-        <div class="container">
-            <h2>Formulir Pemesanan Cepat</h2>
-            <p style="text-align: center; margin-bottom: 30px;">Isi data di bawah, CS kami akan segera memproses pesanan Anda via WhatsApp.</p>
-            <div class="form-box">
-                <div class="price-tag">
-                    <p style="font-weight: bold; color: var(--secondary);">PROMO KHUSUS HARI INI!</p>
-                    <span class="price-old">Rp 150.000</span><br>
-                    <span class="price-new">Rp 99.000</span>
-                    <div class="stock-alert">🔥 Stok Menipis! </div>
+        <section class="section testimonials">
+            <h2 class="section-title">Testimoni Pelanggan</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="whatsapp-header">
+                        <div class="whatsapp-avatar">
+                            <img src="https://via.placeholder.com/100/25d366/ffffff?text=B" alt="Budi">
+                        </div>
+                        <div class="whatsapp-info">
+                            <h4>Budi Santoso</h4>
+                            <p>online</p>
+                        </div>
+                    </div>
+                    <div class="whatsapp-body">
+                        <div class="whatsapp-message">
+                            <p style="margin: 0;">Sangat efektif! Dalam 3 hari tikus di gudang saya hilang total. Produk yang sangat recommended! 👍</p>
+                            <div class="whatsapp-time">10:23</div>
+                        </div>
+                    </div>
                 </div>
 
-                <form id="orderForm">
-                    <div class="form-group">
-                        <label for="nama">Nama Lengkap Penerima</label>
-                        <input type="text" id="nama" name="nama" placeholder="Contoh: Budi Santoso" required>
+                <div class="testimonial-card">
+                    <div class="whatsapp-header">
+                        <div class="whatsapp-avatar">
+                            <img src="https://via.placeholder.com/100/25d366/ffffff?text=S" alt="Siti">
+                        </div>
+                        <div class="whatsapp-info">
+                            <h4>Siti Aminah</h4>
+                            <p>online</p>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="whatsapp">Nomor WhatsApp Aktif</label>
-                        <input type="tel" id="whatsapp" name="whatsapp" placeholder="085123456789" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    <div class="whatsapp-body">
+                        <div class="whatsapp-message">
+                            <p style="margin: 0;">Sudah coba berbagai produk tapi RAT KILLER yang paling ampuh. Harganya juga terjangkau! ⭐⭐⭐⭐⭐</p>
+                            <div class="whatsapp-time">14:15</div>
+                        </div>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label for="alamat">Alamat Lengkap Pengiriman</label>
-                        <textarea id="alamat" name="alamat" rows="3" placeholder="Jln, RT/RW, Kelurahan, Kecamatan, Kota/Kab (Agar kurir tidak nyasar)" required></textarea>
+                <div class="testimonial-card">
+                    <div class="whatsapp-header">
+                        <div class="whatsapp-avatar">
+                            <img src="https://via.placeholder.com/100/25d366/ffffff?text=A" alt="Agus">
+                        </div>
+                        <div class="whatsapp-info">
+                            <h4>Agus Wijaya</h4>
+                            <p>online</p>
+                        </div>
                     </div>
-
-                    <div class="form-group">
-                        <label for="jumlah">Pilih Paket Hemat</label>
-                        <select id="jumlah" name="jumlah" required>
-                            <option value="">-- Pilih Paket --</option>
-                            <option value="1 Paket (Rp 75.000)">1 Paket - Rp 99.000</option>
-                            <option value="2 Paket (Rp 140.000)">2 Paket - Rp 1900.000 </option>
-                            <option value="3 Paket (Rp 200.000)">3 Paket - Rp 270.000 </option>
-                        </select>
+                    <div class="whatsapp-body">
+                        <div class="whatsapp-message">
+                            <p style="margin: 0;">Tikus di restoran saya akhirnya bisa teratasi. Terima kasih RAT KILLER! 🙏</p>
+                            <div class="whatsapp-time">09:47</div>
+                        </div>
                     </div>
-
-                    <button type="submit" class="btn-cta" style="width: 100%; border-radius: 10px; border: none;">PESAN SEKARANG VIA WA</button>
-                    <div class="loader" id="loader"></div>
-                    <p style="text-align: center; font-size: 0.8rem; margin-top: 15px; color: #777;">🔒 Data Anda aman. Pembayaran bisa COD (Bayar di Tempat).</p>
-                </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer>
-        <p>&copy; 2026 RatKiller . Solusi Rumah Bersih.</p>
-    </footer>
+        <section class="section order-section" id="order">
+            <h2 class="section-title" style="color: white;">Pesan Sekarang!</h2>
+            <form class="order-form" id="orderForm">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Nomor HP/WhatsApp *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Alamat Lengkap *</label>
+                    <textarea id="address" name="address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="product">Pilih Produk *</label>
+                    <select id="product" name="product" required>
+                        <option value="">-- Pilih Paket --</option>
+                        <option value="Paket 1 - Rp 50.000">Paket 1 - Rp 50.000</option>
+                        <option value="Paket 2 - Rp 90.000">Paket 2 - Rp 90.000</option>
+                        <option value="Paket 3 - Rp 150.000">Paket 3 - Rp 150.000</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Jumlah *</label>
+                    <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+                </div>
+                <button type="submit" class="submit-btn">Kirim Pesanan</button>
+            </form>
+        </section>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2024 RAT KILLER - Pembasmi Tikus Profesional</p>
+        <p>Hubungi kami: lampionesia1@gmail.com</p>
+    </div>
 
     <script>
         document.getElementById('orderForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Mencegah reload halaman
+            e.preventDefault();
 
-            // 1. Ambil Data dari Form
-            const nama = document.getElementById('nama').value;
-            const whatsapp = document.getElementById('whatsapp').value;
-            const alamat = document.getElementById('alamat').value;
-            const jumlah = document.getElementById('jumlah').value;
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const product = document.getElementById('product').value;
+            const quantity = document.getElementById('quantity').value;
 
-            // Validasi sederhana
-            if (whatsapp.length < 9) {
-                alert("Mohon masukkan nomor WhatsApp yang valid.");
-                return;
-            }
+            const formData = new FormData();
+            formData.append('Nama', name);
+            formData.append('No HP', phone);
+            formData.append('Alamat', address);
+            formData.append('Produk', product);
+            formData.append('Jumlah', quantity);
 
-            // Tampilkan Loading, sembunyikan tombol
-            const btn = document.querySelector('button[type="submit"]');
-            const loader = document.getElementById('loader');
-            btn.style.display = 'none';
-            loader.style.display = 'block';
-
-            // --- PROSES PENGIRIMAN KE WHATSAPP ---
-            // Simulasi loading 1.5 detik agar terasa ada proses
-            setTimeout(() => {
-                // Format pesan WhatsApp (Gunakan %0A untuk baris baru)
-                const text = `Halo Admin, saya mau pesan promo *RatKiller Pro* dong.%0A%0ABerikut data saya:%0A👤 Nama: *${nama}*%0A📱 No WA: *${whatsapp}*%0A🏠 Alamat: ${alamat}%0A📦 Pesanan: *${jumlah}*%0A%0ATolong segera diproses ya, bisa COD kan? Terima kasih.`;
-
-                // PENTING: GANTI NOMOR HP DI BAWAH INI DENGAN NOMOR CS ANDA (Pakai kode negara 62, tanpa + atau 0 di depan)
-                const nomorCS = "6285229162517";
-
-                // Buka WhatsApp
-                window.location.href = `https://wa.me/${nomorCS}?text=${text}`;
-
-                // Reset tombol loading (jika user kembali ke halaman ini)
-                btn.style.display = 'block';
-                loader.style.display = 'none';
-            }, 1500);
-
-            // --- CATATAN UNTUK WEB LINCAH ---
-            // Jika Anda ingin data ini masuk ke database Web Lincah secara otomatis di latar belakang (tanpa cuma lewat WA),
-            // Anda perlu menambahkan kode "fetch()" API di sini, seperti contoh pada script sebelumnya.
-            // Untuk saat ini, script ini fokus mengarahkan data langsung ke chat WhatsApp CS.
+            fetch('https://formsubmit.co/lampionesia1@gmail.com', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        alert('Pesanan berhasil dikirim! Kami akan segera menghubungi Anda.');
+                        document.getElementById('orderForm').reset();
+                    } else {
+                        alert('Terjadi kesalahan. Silakan coba lagi.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Terjadi kesalahan. Silakan coba lagi.');
+                });
         });
     </script>
 </body>
 
-
 </html>
-
-
-
-
-
-
