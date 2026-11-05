@@ -230,7 +230,7 @@ const PASS=15;
 const best=k=>{const s=st[k];if(!s)return 0;return s.c!==undefined?s.c:Math.round((s.best||0)*(B[k]?B[k].q.length:20)/100)};
 const passed=k=>best(k)>=PASS;
 const unlocked=k=>k===1||passed(k-1);
-let tmr=null,TL=300;
+let tmr=null,TL=240;
 function stopT(){if(tmr){clearInterval(tmr);tmr=null}}
 function fmtT(n){return Math.floor(n/60)+":"+String(n%60).padStart(2,"0")}
 function startT(){
