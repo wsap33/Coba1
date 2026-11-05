@@ -3,11 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>DUNIA MAPPING – Belajar tentang Pemetaan dan ArcGIS</title>
+<title>DUNIA MAPPING-web wahyu – Belajar tentang Pemetaan dan ArcGIS</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 :root{--bg:#f4f1e8;--bg2:#e6efe6;--card:#fffdf7;--tx:#16302b;--mut:#5d756e;--ac:#0d6b57;--gold:#b7791f;--line:#d6dccf;--ok:#46c28a;--bad:#ef7b6e;--cont:#0d6b57;--grid:rgba(13,107,87,.07);--topo:.55;--sh:0 6px 24px rgba(20,60,50,.1);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08201c;--bg2:#0d332c;--card:#0f2b26;--tx:#ecf5ef;--mut:#92b5aa;--ac:#4fd1a5;--gold:#f0c060;--line:rgba(120,210,180,.25);--cont:#6fe0bd;--grid:rgba(111,224,189,.07);--topo:.6;--sh:0 8px 28px rgba(0,0,0,.35)}}
+:root[data-theme="dark"]{--bg:#08201c;--bg2:#0d332c;--card:#0f2b26;--tx:#ecf5ef;--mut:#92b5aa;--ac:#4fd1a5;--gold:#f0c060;--line:rgba(120,210,180,.25);--cont:#6fe0bd;--grid:rgba(111,224,189,.07);--topo:.6;--sh:0 8px 28px rgba(0,0,0,.35)}
+.tg{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--tx);cursor:pointer;font-size:18px;line-height:1;box-shadow:var(--sh)}
+.hr{display:flex;align-items:center;gap:10px}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;min-height:100vh;font-family:Inter,"Segoe UI",system-ui,sans-serif;color:var(--tx);background:linear-gradient(160deg,var(--bg),var(--bg2));background-color:var(--bg)}
@@ -69,6 +72,31 @@ h2.q{font-family:Inter,sans-serif;font-size:19px;line-height:1.55;font-weight:60
 .ring{width:160px;height:160px;border-radius:50%;margin:12px auto 16px;display:grid;place-items:center;background:conic-gradient(var(--gold) calc(var(--p)*1%),var(--line) 0)}
 .ring span{width:130px;height:130px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-family:"Playfair Display",Georgia,serif;font-size:40px;font-weight:800}
 .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+.ket{text-align:left;margin-top:22px;padding-top:18px;border-top:1px dashed var(--line)}
+.ket h4{font-family:"Playfair Display",Georgia,serif;font-size:19px;margin:0 0 8px}
+.ket h4:not(:first-child){margin-top:20px}
+.kt{width:100%;border-collapse:collapse;margin:6px 0 12px}
+.kt td{padding:8px 4px;border-bottom:1px solid var(--line);font-size:14px}
+.kt td:first-child{color:var(--mut);width:40%}
+.wl{list-style:none;padding:0;margin:0}
+.wl li{margin:0 0 10px;padding:10px 12px;border-left:3px solid var(--bad);background:rgba(239,123,110,.08);border-radius:0 10px 10px 0;font-size:14px;line-height:1.55}
+.wl small{color:var(--mut)}
+.fld{display:block;margin:0 0 14px;text-align:left;font-size:13px;color:var(--mut);font-weight:600}
+.fld input{display:block;width:100%;margin-top:6px;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:transparent;color:var(--tx);font:inherit;font-size:16px}
+.fld input:focus{outline:2px solid var(--ac);border-color:var(--ac)}
+.err{color:var(--bad);font-size:13px;min-height:18px;margin:0 0 8px}
+.out{padding:8px 14px!important;font-size:13px}
+.pf{font:inherit;font-size:12px;background:var(--card);color:var(--tx);cursor:pointer;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pf::after{content:" \270E";color:var(--gold)}
+.pf:hover{border-color:var(--ac)}
+header{gap:10px;flex-wrap:wrap}
+.logo{text-align:left;line-height:1.2;font-size:15px}
+.user{display:flex;align-items:center;gap:12px;margin:0 0 12px;max-width:420px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;box-shadow:var(--sh);color:var(--tx);font:inherit;cursor:pointer}
+.user:hover{border-color:var(--ac)}
+.av{width:40px;height:40px;border-radius:50%;background:var(--ac);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:18px;flex:none}
+.user small{display:block;color:var(--mut);font-size:12px}
+.user b{font-size:16px}
+.user i{margin-left:auto;color:var(--gold);font-style:normal}
 .hide{display:none!important}
 .modal{position:fixed;inset:0;z-index:5;background:rgba(0,0,0,.55);display:grid;place-items:center;padding:20px}
 .modal .panel{max-width:380px}
@@ -79,17 +107,29 @@ footer{margin-top:40px;text-align:center;color:var(--mut);font-size:13px}
 <svg id="topo" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 800" aria-hidden="true"></svg>
 <div class="grid"></div>
 <div class="wrap">
-  <header><button class="logo" id="home-btn"><b>◈</b>DUNIA MAPPING</button><span class="chip" style="font-size:12px">Pusat Latihan GIS</span></header>
+  <header><button class="logo" id="home-btn"><b>◈</b>DUNIA MAPPING-web wahyu</button><div class="hr"><button class="chip pf" id="pf" title="Sesuaikan untuk pengguna">Isi nama pengguna</button><button class="sec out hide" id="out">Keluar</button><button class="tg" id="tg" aria-label="Ganti mode terang atau gelap" title="Ganti mode terang/gelap"></button></div></header>
+
+  <section id="login" class="panel c hide" style="max-width:420px;margin-top:30px">
+    <div class="eyebrow">Selamat Datang</div>
+    <h2>Masuk ke DUNIA MAPPING-web wahyu</h2>
+    <p>Masuk untuk mulai belajar pemetaan dan ArcGIS.</p>
+    <label class="fld">Username<input id="lu" value="1234" autocomplete="username" inputmode="numeric"></label>
+    <label class="fld">Password<input id="lp" type="password" value="1234" autocomplete="current-password"></label>
+    <div class="err" id="le" role="alert"></div>
+    <button class="pri" id="lg" style="width:100%">Login</button>
+    <p style="margin-top:14px;font-size:12.5px">Akun sementara: username <b>1234</b> · password <b>1234</b></p>
+  </section>
 
   <section id="home">
     <div class="hero">
-      <div class="eyebrow">Tempat Pelatihan GIS</div>
+      <div class="eyebrow" id="gr">Tempat Pelatihan GIS</div>
       <h1>DUNIA <em>MAPPING</em></h1>
       <p class="sub">Belajar tentang pemetaan dan ArcGIS secara bertahap: dari dasar GIS hingga analisis geospasial terintegrasi, lewat 10 batch latihan soal.</p>
       <div class="prog"><div><span>Progres belajar</span><span id="pt"></span></div><div class="bar"><b id="pb"></b></div></div>
     </div>
     <h3 class="sec">Pilih Batch Latihan</h3>
     <div class="cards" id="cards"></div>
+    <div class="ket" id="ket"></div>
   </section>
 
   <section id="intro" class="panel hide">
@@ -97,12 +137,12 @@ footer{margin-top:40px;text-align:center;color:var(--mut);font-size:13px}
     <h2 id="i-t"></h2>
     <p id="i-p"></p>
     <div class="chips" id="i-c"></div>
-    <p>Pilih satu jawaban untuk tiap soal. Kamu bisa berpindah soal lewat nomor atau tombol navigasi. Setelah selesai, kamu akan melihat nilai dan jawaban yang benar.</p>
+    <p>Pilih satu jawaban untuk tiap soal. Kamu bisa berpindah soal lewat nomor atau tombol navigasi. Semua soal wajib dijawab. Waktu mengerjakan 300 detik; jika waktu habis, jawaban otomatis dikumpulkan. Jawaban yang benar hanya bisa dilihat jika kamu lulus.</p>
     <div class="row" style="justify-content:flex-start"><button class="pri" id="i-go">Mulai Batch</button><button class="sec" id="i-back">Kembali</button></div>
   </section>
 
   <section id="quiz" class="panel hide">
-    <div class="top"><span id="cnt"></span><span id="ans"></span></div>
+    <div class="top"><span id="cnt"></span><span id="tm" style="font-weight:700;font-variant-numeric:tabular-nums">⏱ 5:00</span><span id="ans"></span></div>
     <div class="bar"><b id="qb"></b></div>
     <div class="bt" id="bt"></div>
     <h2 class="q" id="q"></h2>
@@ -120,8 +160,15 @@ footer{margin-top:40px;text-align:center;color:var(--mut);font-size:13px}
     <div class="row"><button class="pri" id="rev">Lihat Jawaban</button><button class="sec" id="again">Ulangi</button><button class="sec" id="nxt">Batch Berikutnya</button><button class="sec" id="hm">Beranda</button></div>
   </section>
 
-  <footer>DUNIA MAPPING · Belajar tentang Pemetaan dan ArcGIS</footer>
+  <footer>DUNIA MAPPING-web wahyu · Belajar tentang Pemetaan dan ArcGIS</footer>
 </div>
+
+<div id="pmodal" class="modal hide"><div class="panel">
+  <h2 style="font-size:22px">Sesuaikan untuk Pengguna</h2>
+  <p>Isi nama Anda, nama akan tampil di header dan beranda.</p>
+  <label class="fld">Nama pengguna<input id="pn" maxlength="30" placeholder="mis. Wahyu"></label>
+  <div class="row" style="justify-content:flex-end"><button class="sec" id="pr">Reset</button><button class="sec" id="pc">Batal</button><button class="pri" id="ps">Simpan</button></div>
+</div></div>
 
 <div id="modal" class="modal hide"><div class="panel">
   <h2 style="font-size:22px">Selesaikan batch?</h2><p id="mp"></p>
@@ -183,7 +230,16 @@ const PASS=15;
 const best=k=>{const s=st[k];if(!s)return 0;return s.c!==undefined?s.c:Math.round((s.best||0)*(B[k]?B[k].q.length:20)/100)};
 const passed=k=>best(k)>=PASS;
 const unlocked=k=>k===1||passed(k-1);
-function show(id){["home","intro","quiz","result"].forEach(x=>$(x).classList.toggle("hide",x!==id));scrollTo(0,0)}
+let tmr=null,TL=300;
+function stopT(){if(tmr){clearInterval(tmr);tmr=null}}
+function fmtT(n){return Math.floor(n/60)+":"+String(n%60).padStart(2,"0")}
+function startT(){
+ stopT();const end=Date.now()+TL*1000,el=$("tm");
+ const tick=()=>{const r=Math.max(0,Math.ceil((end-Date.now())/1000));el.textContent="⏱ "+fmtT(r);el.style.color=r<=60?"#e5484d":"";
+  if(r<=0){stopT();$("modal").classList.add("hide");result(true)}};
+ tick();if(!tmr)tmr=setInterval(tick,250);
+}
+function show(id){if(id!=="quiz")stopT();["login","home","intro","quiz","result"].forEach(x=>$(x).classList.toggle("hide",x!==id));$("out").classList.toggle("hide",id==="login");scrollTo(0,0)}
 
 /* latar kontur dan peta */
 (function(){
@@ -205,12 +261,18 @@ function show(id){["home","intro","quiz","result"].forEach(x=>$(x).classList.tog
 })();
 
 function home(){
+ if(!isIn()){show("login");return}
  const done=M.filter((m,i)=>passed(i+1)).length;
  $("pt").textContent=`${done} dari 10 batch selesai`;
  $("pb").style.width=done/10*100+"%";
  $("cards").innerHTML=M.map((m,i)=>{
   const k=i+1,has=!!B[k],s=st[k];
   return `<button class="bc" data-b="${k}" ${has&&unlocked(k)?"":"disabled"}>${s&&s.done?`<span class="badge">${passed(k)?"✓ ":""}${best(k)}/${B[k].q.length}</span>`:""}<div class="no">${String(k).padStart(2,"0")}</div><span class="lv">${m[0]}</span><h4>${m[1]}</h4><small>${has&&!unlocked(k)?"🔒 Terkunci · benar minimal 15 di Batch "+(k-1):has?B[k].q.length+" soal · pilihan ganda"+(s?` · terbaik ${best(k)}/${B[k].q.length}`:""):"Segera hadir"}</small></button>`}).join("");
+ const at=M.map((m,i)=>i+1).filter(k=>B[k]&&st[k]),tot=at.length;
+ const avg=tot?Math.round(at.reduce((a,k)=>a+best(k)/B[k].q.length*100,0)/tot):0;
+ const pr=v=>v>=90?"Sangat Baik":v>=75?"Baik":v>=60?"Cukup":"Perlu Ditingkatkan";
+ const wk=at.filter(k=>!passed(k));
+ $("ket").innerHTML=`<h3 class="sec">Keterangan Hasil Belajar</h3>`+(tot?`<table class="kt"><tr><td>Batch dikerjakan</td><td>${tot} dari ${Object.keys(B).length} batch tersedia</td></tr><tr><td>Batch lulus</td><td>${done} (syarat minimal 15 benar)</td></tr><tr><td>Rata-rata nilai terbaik</td><td><b>${avg}</b> / 100 · ${pr(avg)}</td></tr></table><table class="kt">${at.map(k=>{const c=best(k),n=B[k].q.length,v=Math.round(c/n*100);return `<tr><td>Batch ${k} · ${M[k-1][1]}</td><td><b>${v}</b> (${c}/${n}) · ${pr(v)} · ${passed(k)?"Lulus":"Belum lulus"}</td></tr>`}).join("")}</table>`:`<p>Belum ada nilai. Kerjakan Batch 1 untuk melihat hasil belajarmu di sini.</p>`)+`<h4>Perlu Ditingkatkan</h4>`+(!tot?`<p>Belum ada data yang perlu ditingkatkan.</p>`:wk.length?`<ul class="wl">${wk.map(k=>`<li><b>Batch ${k} · ${M[k-1][1]}</b><br><small>Nilai terbaik ${best(k)}/${B[k].q.length}, kurang ${PASS-best(k)} jawaban benar untuk lulus.${st[k].w&&st[k].w.length?"<br>Soal yang perlu diulang (percobaan terakhir): No. "+st[k].w.join(", "):""}</small></li>`).join("")}</ul>`:`<p>Tidak ada. Semua batch yang dikerjakan sudah lulus.</p>`);
  show("home");
 }
 $("cards").onclick=e=>{const b=e.target.closest(".bc");if(!b||b.disabled)return;intro(+b.dataset.b)};
@@ -224,7 +286,7 @@ function intro(k){
 }
 function start(){
  Q=B[bn].q.map((s,i)=>{const p=s.split("|");return{q:p[0],o:p.slice(1),a:L.indexOf(B[bn].k[i])}});
- cur=0;A=Array(Q.length).fill(null);review=false;show("quiz");render();
+ cur=0;A=Array(Q.length).fill(null);review=false;show("quiz");render();$("tm").classList.remove("hide");startT();
 }
 function render(){
  const d=Q[cur];
@@ -252,27 +314,54 @@ $("next").onclick=()=>{
  if(cur<Q.length-1){cur++;render();return}
  if(review){result(false);return}
  const un=A.filter(x=>x===null).length;
- $("mp").textContent=un?`Masih ada ${un} soal yang belum dijawab. Yakin ingin menyelesaikan?`:"Semua soal sudah dijawab. Lihat hasilmu sekarang?";
+ const first=A.findIndex(x=>x===null);
+ $("mp").textContent=un?`Masih ada ${un} soal yang belum dijawab (mulai dari nomor ${first+1}). Semua soal wajib dijawab sebelum diselesaikan.`:"Semua soal sudah dijawab. Lihat hasilmu sekarang?";
+ $("my").classList.toggle("hide",un>0);$("mn").dataset.go=un?first:"";
  $("modal").classList.remove("hide");
 };
-$("mn").onclick=()=>$("modal").classList.add("hide");
+$("mn").onclick=()=>{$("modal").classList.add("hide");const g=$("mn").dataset.go;if(g!==undefined&&g!==""){cur=+g;render()}};
 $("my").onclick=()=>{$("modal").classList.add("hide");result(true)};
 function result(saveIt){
+ stopT();
  const ok=A.filter((a,i)=>a===Q[i].a).length,un=A.filter(a=>a===null).length,no=Q.length-ok-un,p=Math.round(ok/Q.length*100);
- if(saveIt){const s=st[bn]||{best:0};st[bn]={best:Math.max(s.best||0,p),c:Math.max(best(bn),ok),done:true};save()}
+ if(saveIt){const s=st[bn]||{best:0};st[bn]={best:Math.max(s.best||0,p),c:Math.max(best(bn),ok),w:Q.map((x,i)=>i).filter(i=>A[i]!==Q[i].a).map(i=>i+1),done:true};save()}
  $("r-b").textContent=`Batch ${bn} · ${M[bn-1][1]}`;
  $("ring").style.setProperty("--p",p);$("sc").textContent=p;
  $("s1").textContent=`✓ Benar ${ok}`;$("s2").textContent=`✗ Salah ${no}`;$("s3").textContent=`– Kosong ${un}`;
  $("msg").textContent=p>=80?"Luar biasa! Pemahamanmu sudah kuat.":p>=60?"Bagus! Periksa lagi soal yang salah lalu coba ulangi.":"Tetap semangat! Lihat jawaban yang benar lalu ulangi latihan.";
- $("msg").textContent=ok>=PASS?(B[bn+1]?"Lulus! Batch berikutnya sudah terbuka.":"Lulus! Kamu sudah menyelesaikan semua batch yang tersedia."):`Belum lulus: butuh minimal ${PASS} jawaban benar, kamu baru ${ok}. Lihat jawaban lalu ulangi.`;
+ $("msg").textContent=ok>=PASS?(B[bn+1]?"Lulus! Batch berikutnya sudah terbuka.":"Lulus! Kamu sudah menyelesaikan semua batch yang tersedia."):`Belum lulus: butuh minimal ${PASS} jawaban benar, kamu baru ${ok}. Jawaban yang benar baru bisa dilihat setelah lulus, silakan ulangi latihan.`;
  $("nxt").classList.toggle("hide",!(B[bn+1]&&passed(bn)));
+ $("rev").classList.toggle("hide",ok<PASS);result.ok=ok>=PASS;
  show("result");
 }
-$("rev").onclick=()=>{review=true;cur=0;show("quiz");render()};
+$("rev").onclick=()=>{if(!result.ok)return;review=true;cur=0;show("quiz");$("tm").classList.add("hide");render()};
 $("again").onclick=start;
 $("nxt").onclick=()=>intro(bn+1);
 $("hm").onclick=home;
 $("home-btn").onclick=home;
+const DL="Pusat Latihan GIS";
+let prof={n:"",l:DL};
+try{prof=Object.assign(prof,JSON.parse(localStorage.getItem("dm-prof")||"{}"))}catch(e){}
+function applyProf(){$("pf").textContent=prof.n||"Isi nama pengguna";$("gr").textContent=prof.n?"Selamat belajar, "+prof.n:"Tempat Pelatihan GIS"}
+applyProf();
+function closeP(){$("pmodal").classList.add("hide")}
+$("pf").onclick=()=>{$("pn").value=prof.n;$("pmodal").classList.remove("hide");$("pn").focus()};
+$("pc").onclick=closeP;
+$("pr").onclick=()=>{$("pn").value=""};
+$("ps").onclick=()=>{prof={n:$("pn").value.trim().slice(0,30),l:DL};try{localStorage.setItem("dm-prof",JSON.stringify(prof))}catch(e){}applyProf();closeP()};
+const AUTH={u:"1234",p:"1234"};
+function isIn(){try{return localStorage.getItem("dm-auth")==="1"}catch(e){return window._in===true}}
+function setIn(v){window._in=v;try{v?localStorage.setItem("dm-auth","1"):localStorage.removeItem("dm-auth")}catch(e){}}
+function doLogin(){const u=$("lu").value.trim(),p=$("lp").value;if(u===AUTH.u&&p===AUTH.p){$("le").textContent="";setIn(true);home()}else $("le").textContent="Username atau password salah."}
+$("lg").onclick=doLogin;
+["lu","lp"].forEach(id=>{$(id).onkeydown=e=>{if(e.key==="Enter")doLogin()}});
+$("out").onclick=()=>{setIn(false);$("lu").value="1234";$("lp").value="1234";show("login")};
+const root=document.documentElement;
+const isDark=()=>root.dataset.theme?root.dataset.theme==="dark":!!(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches);
+try{const t=localStorage.getItem("dm-theme");if(t)root.dataset.theme=t}catch(e){}
+const icon=()=>{$("tg").textContent=isDark()?"☀️":"🌙"};
+icon();
+$("tg").onclick=()=>{const t=isDark()?"light":"dark";root.dataset.theme=t;icon();try{localStorage.setItem("dm-theme",t)}catch(e){}};
 $("i-go").onclick=start;
 $("i-back").onclick=home;
 home();
