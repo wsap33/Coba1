@@ -3,203 +3,279 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Latihan Soal ArcGIS dan Pemetaan</title>
+<title>DUNIA MAPPING – Belajar tentang Pemetaan dan ArcGIS</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
-:root{--bg:#f2f6ff;--bg2:#e3ecff;--card:#ffffff;--tx:#14213d;--mut:#55627f;--ac:#0047e1;--ac2:#7aa7ff;--line:#cdd9f5;--ok:#4ade80;--bad:#f87171;--btn:#0047e1;--btnt:#ffffff;--cont:#0047e1;--grid:rgba(0,71,225,.07);--topo:.7;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a1530;--bg2:#0f1f45;--card:#111f40;--tx:#eaf0ff;--mut:#9fb0d8;--ac:#6b9bff;--ac2:#7aa7ff;--line:rgba(120,150,255,.3);--btn:#2f66ff;--btnt:#fff;--cont:#6f9bff;--grid:rgba(111,155,255,.08);--topo:.55}}
+:root{--bg:#f4f1e8;--bg2:#e6efe6;--card:#fffdf7;--tx:#16302b;--mut:#5d756e;--ac:#0d6b57;--gold:#b7791f;--line:#d6dccf;--ok:#46c28a;--bad:#ef7b6e;--cont:#0d6b57;--grid:rgba(13,107,87,.07);--topo:.55;--sh:0 6px 24px rgba(20,60,50,.1);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08201c;--bg2:#0d332c;--card:#0f2b26;--tx:#ecf5ef;--mut:#92b5aa;--ac:#4fd1a5;--gold:#f0c060;--line:rgba(120,210,180,.25);--cont:#6fe0bd;--grid:rgba(111,224,189,.07);--topo:.6;--sh:0 8px 28px rgba(0,0,0,.35)}}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;font-family:"Segoe UI",system-ui,-apple-system,Roboto,Arial,sans-serif;color:var(--tx);background:var(--bg)}
-#topo{opacity:var(--topo);position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-.grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:56px 56px}
-.wrap{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:20px 16px 40px}
-.brand{display:flex;align-items:center;gap:10px;font-size:14px;font-weight:700;background:var(--btn);color:#fff;border-radius:14px;padding:13px 16px;margin-bottom:14px;box-shadow:0 4px 14px rgba(0,71,225,.3)}
-.brand i{width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.3)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 4px 18px rgba(0,40,140,.1)}
-h1{font-size:26px;margin:0 0 8px;line-height:1.25}
-h2{font-size:18px;margin:0 0 14px;line-height:1.5;font-weight:600}
-p{color:var(--mut);line-height:1.6;margin:0 0 12px}
-.meta{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 20px}
-.chip{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:13px;color:var(--tx)}
-button{font:inherit;cursor:pointer;border:0;border-radius:10px;padding:11px 20px;font-weight:600}
-.pri{background:var(--btn);color:var(--btnt)}
-.sec{background:transparent;color:var(--tx);border:1px solid var(--line)}
+body{margin:0;min-height:100vh;font-family:Inter,"Segoe UI",system-ui,sans-serif;color:var(--tx);background:linear-gradient(160deg,var(--bg),var(--bg2));background-color:var(--bg)}
+#topo{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:var(--topo)}
+.grid{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:60px 60px}
+.wrap{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:18px 18px 56px}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:26px}
+.logo{display:flex;align-items:center;gap:10px;font-family:"Playfair Display",Georgia,serif;font-weight:800;letter-spacing:.06em;cursor:pointer;background:none;border:0;color:var(--tx);font-size:17px;padding:0}
+.logo b{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--ac);color:var(--bg);font-size:15px}
+.hero{padding:34px 0 28px}
+.eyebrow{color:var(--gold);font-weight:700;letter-spacing:.2em;font-size:12px;text-transform:uppercase}
+h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(36px,7vw,64px);line-height:1.05;margin:10px 0 12px;font-weight:800}
+h1 em{font-style:normal;color:var(--ac)}
+.sub{font-size:clamp(16px,2.4vw,20px);color:var(--mut);max-width:620px;line-height:1.6;margin:0 0 22px}
+.prog{max-width:420px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--sh)}
+.prog div{display:flex;justify-content:space-between;font-size:13px;color:var(--mut);margin-bottom:8px}
+.bar{height:7px;border-radius:7px;background:var(--line);overflow:hidden}
+.bar b{display:block;height:100%;background:linear-gradient(90deg,var(--ac),var(--gold));width:0;transition:width .35s}
+h3.sec{font-family:"Playfair Display",Georgia,serif;font-size:24px;margin:30px 0 14px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
+.bc{position:relative;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--sh);cursor:pointer;color:var(--tx);font:inherit;transition:transform .15s,border-color .15s}
+.bc:hover:not(:disabled){transform:translateY(-3px);border-color:var(--ac)}
+.bc:disabled{opacity:.55;cursor:not-allowed}
+.no{font-family:"Playfair Display",Georgia,serif;font-size:40px;font-weight:800;color:var(--ac);line-height:1}
+.lv{display:inline-block;margin:8px 0 6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:99px;background:rgba(183,121,31,.15);color:var(--gold)}
+.bc h4{margin:0 0 10px;font-size:15px;line-height:1.35;min-height:40px}
+.bc small{color:var(--mut);font-size:12.5px}
+.badge{position:absolute;top:14px;right:14px;font-size:12px;font-weight:700;color:var(--ac)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--sh);max-width:760px;margin:0 auto}
+.panel h2{font-family:"Playfair Display",Georgia,serif;font-size:28px;margin:6px 0 10px}
+p{color:var(--mut);line-height:1.65;margin:0 0 12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 20px}
+.chip{border:1px solid var(--line);border-radius:99px;padding:6px 13px;font-size:13px}
+button.pri,button.sec{font:inherit;font-weight:600;border-radius:12px;padding:12px 22px;cursor:pointer}
+button.pri{background:var(--ac);color:var(--bg);border:0}
+button.sec{background:transparent;color:var(--tx);border:1px solid var(--line)}
 button:disabled{opacity:.4;cursor:not-allowed}
-.bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin:10px 0 18px}
-.bar b{display:block;height:100%;background:var(--ac);width:0;transition:width .3s}
-.top{display:flex;justify-content:space-between;align-items:center;font-size:14px;color:var(--mut)}
-.sect{color:var(--ac);font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:6px}
-.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;margin-bottom:10px;padding:13px 14px;background:transparent;color:var(--tx);border:1.5px solid var(--line);border-radius:12px;font-weight:400;line-height:1.45}
-.opt:hover{border-color:var(--ac2)}
+.top{display:flex;justify-content:space-between;font-size:14px;color:var(--mut)}
+.top+.bar{margin:10px 0 20px}
+.bt{color:var(--gold);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+h2.q{font-family:Inter,sans-serif;font-size:19px;line-height:1.55;font-weight:600;margin:0 0 16px}
+.opt{display:flex;gap:12px;align-items:flex-start;width:100%;text-align:left;margin-bottom:10px;padding:13px 14px;background:transparent;color:var(--tx);border:1.5px solid var(--line);border-radius:13px;font:inherit;line-height:1.5;cursor:pointer}
+.opt:hover{border-color:var(--ac)}
 .opt .l{flex:none;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:13px;font-weight:700}
-.opt.sel{border-color:var(--ac);background:rgba(0,71,225,.08)}
-.opt.sel .l{background:var(--ac);color:var(--btnt);border-color:var(--ac)}
-.opt.ok{border-color:var(--ok);background:rgba(63,199,160,.15)}
-.opt.ok .l{background:var(--ok);color:#052e16;border-color:var(--ok)}
-.opt.bad{border-color:var(--bad);background:rgba(255,122,107,.13)}
+.opt.sel{border-color:var(--ac);background:rgba(79,209,165,.1)}
+.opt.sel .l{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.opt.ok{border-color:var(--ok);background:rgba(70,194,138,.16)}
+.opt.ok .l{background:var(--ok);color:#06231a;border-color:var(--ok)}
+.opt.bad{border-color:var(--bad);background:rgba(239,123,110,.14)}
 .opt.bad .l{background:var(--bad);color:#2b0a05;border-color:var(--bad)}
 .nav{display:flex;justify-content:space-between;gap:10px;margin-top:16px}
 .nums{display:grid;grid-template-columns:repeat(auto-fill,minmax(38px,1fr));gap:8px;margin-top:20px;padding-top:18px;border-top:1px dashed var(--line)}
-.nums button{padding:8px 0;background:transparent;color:var(--tx);border:1.5px solid var(--line);border-radius:8px;font-size:13px}
-.nums button.done{background:var(--ac2);color:#06231a;border-color:var(--ac2)}
-.nums button.cur{outline:2px solid var(--ac);outline-offset:2px}
-.nums button.ok{background:var(--ok);color:#06231a;border-color:var(--ok)}
-.nums button.bad{background:var(--bad);color:#2b0a05;border-color:var(--bad)}
-.score{text-align:center}
-.ring{width:150px;height:150px;border-radius:50%;margin:10px auto 16px;display:grid;place-items:center;background:conic-gradient(var(--ac) calc(var(--p)*1%),var(--line) 0)}
-.ring span{width:122px;height:122px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-size:34px;font-weight:800}
-.stats{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-.exp{margin-top:12px;padding:10px 12px;border-left:3px solid var(--ac2);background:rgba(0,71,225,.07);border-radius:6px;font-size:14px;color:var(--tx)}
+.nums button{padding:8px 0;background:transparent;color:var(--tx);border:1.5px solid var(--line);border-radius:9px;font:inherit;font-size:13px;cursor:pointer}
+.nums .done{background:var(--ac);color:var(--bg);border-color:var(--ac)}
+.nums .cur{outline:2px solid var(--gold);outline-offset:2px}
+.nums .ok{background:var(--ok);color:#06231a;border-color:var(--ok)}
+.nums .bad{background:var(--bad);color:#2b0a05;border-color:var(--bad)}
+.c{text-align:center}
+.ring{width:160px;height:160px;border-radius:50%;margin:12px auto 16px;display:grid;place-items:center;background:conic-gradient(var(--gold) calc(var(--p)*1%),var(--line) 0)}
+.ring span{width:130px;height:130px;border-radius:50%;background:var(--card);display:grid;place-items:center;font-family:"Playfair Display",Georgia,serif;font-size:40px;font-weight:800}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
 .hide{display:none!important}
 .modal{position:fixed;inset:0;z-index:5;background:rgba(0,0,0,.55);display:grid;place-items:center;padding:20px}
-.modal .card{max-width:380px}
+.modal .panel{max-width:380px}
+footer{margin-top:40px;text-align:center;color:var(--mut);font-size:13px}
 </style>
 </head>
 <body>
 <svg id="topo" preserveAspectRatio="xMidYMid slice" viewBox="0 0 1200 800" aria-hidden="true"></svg>
 <div class="grid"></div>
 <div class="wrap">
-  <div class="brand"><i></i>Latihan Soal · Kihajar STEM · GIS</div>
+  <header><button class="logo" id="home-btn"><b>◈</b>DUNIA MAPPING</button><span class="chip" style="font-size:12px">Pusat Latihan GIS</span></header>
 
-  <section id="start" class="card">
-    <h1>ArcGIS dan Pemetaan</h1>
-    <p>Latihan soal pilihan ganda tentang dasar GIS, data spasial, sistem koordinat, serta analisis dan pengolahan data di ArcGIS.</p>
-    <div class="meta"><span class="chip">18 soal</span><span class="chip">Pilihan ganda</span><span class="chip">Skor otomatis</span></div>
-    <p>Pilih satu jawaban untuk tiap soal. Kamu bisa berpindah soal lewat nomor atau tombol navigasi, lalu tekan <b>Selesai</b> untuk melihat nilai dan pembahasan.</p>
-    <button class="pri" id="go">Mulai Latihan</button>
+  <section id="home">
+    <div class="hero">
+      <div class="eyebrow">Tempat Pelatihan GIS</div>
+      <h1>DUNIA <em>MAPPING</em></h1>
+      <p class="sub">Belajar tentang pemetaan dan ArcGIS secara bertahap: dari dasar GIS hingga analisis geospasial terintegrasi, lewat 10 batch latihan soal.</p>
+      <div class="prog"><div><span>Progres belajar</span><span id="pt"></span></div><div class="bar"><b id="pb"></b></div></div>
+    </div>
+    <h3 class="sec">Pilih Batch Latihan</h3>
+    <div class="cards" id="cards"></div>
   </section>
 
-  <section id="quiz" class="card hide">
+  <section id="intro" class="panel hide">
+    <div class="eyebrow" id="i-b"></div>
+    <h2 id="i-t"></h2>
+    <p id="i-p"></p>
+    <div class="chips" id="i-c"></div>
+    <p>Pilih satu jawaban untuk tiap soal. Kamu bisa berpindah soal lewat nomor atau tombol navigasi. Setelah selesai, kamu akan melihat nilai dan jawaban yang benar.</p>
+    <div class="row" style="justify-content:flex-start"><button class="pri" id="i-go">Mulai Batch</button><button class="sec" id="i-back">Kembali</button></div>
+  </section>
+
+  <section id="quiz" class="panel hide">
     <div class="top"><span id="cnt"></span><span id="ans"></span></div>
-    <div class="bar"><b id="pb"></b></div>
-    <div class="sect" id="sect"></div>
-    <h2 id="q"></h2>
+    <div class="bar"><b id="qb"></b></div>
+    <div class="bt" id="bt"></div>
+    <h2 class="q" id="q"></h2>
     <div id="opts"></div>
-    <div class="nav">
-      <button class="sec" id="prev">← Sebelumnya</button>
-      <button class="pri" id="next">Selanjutnya →</button>
-    </div>
+    <div class="nav"><button class="sec" id="prev">← Sebelumnya</button><button class="pri" id="next">Selanjutnya →</button></div>
     <div class="nums" id="nums"></div>
   </section>
 
-  <section id="result" class="card hide">
-    <div class="score">
-      <h1>Hasil Latihan</h1>
-      <div class="ring" id="ring"><span id="sc"></span></div>
-      <div class="stats"><span class="chip" id="s1"></span><span class="chip" id="s2"></span><span class="chip" id="s3"></span></div>
-      <p id="msg"></p>
-      <button class="pri" id="rev">Lihat Pembahasan</button>
-      <button class="sec" id="again">Ulangi</button>
-    </div>
+  <section id="result" class="panel c hide">
+    <div class="eyebrow" id="r-b"></div>
+    <h2>Hasil Latihan</h2>
+    <div class="ring" id="ring"><span id="sc"></span></div>
+    <div class="chips" style="justify-content:center"><span class="chip" id="s1"></span><span class="chip" id="s2"></span><span class="chip" id="s3"></span></div>
+    <p id="msg"></p>
+    <div class="row"><button class="pri" id="rev">Lihat Jawaban</button><button class="sec" id="again">Ulangi</button><button class="sec" id="nxt">Batch Berikutnya</button><button class="sec" id="hm">Beranda</button></div>
   </section>
 
-  <div id="modal" class="modal hide"><div class="card">
-    <h2 id="mt">Selesaikan latihan?</h2>
-    <p id="mp"></p>
-    <div style="display:flex;gap:10px;justify-content:flex-end"><button class="sec" id="mn">Kembali</button><button class="pri" id="my">Ya, selesai</button></div>
-  </div></div>
+  <footer>DUNIA MAPPING · Belajar tentang Pemetaan dan ArcGIS</footer>
 </div>
 
-<script>
-const S1="A. Soal Pilihan Ganda ArcGIS dan Pemetaan",S2="B. Soal Analisis dan Pengolahan Data GIS";
-const D=[
-["Apa kepanjangan dari GIS?",["Geographic Information System","Global Information Service","Geographic Integration Software","General Information System"],0,"GIS = Geographic Information System, sistem untuk mengelola dan menganalisis informasi geografis."],
-["Apa fungsi utama aplikasi ArcGIS?",["Mengolah dokumen teks","Mengelola, menganalisis, dan memvisualisasikan data spasial","Membuat animasi video","Mengelola database keuangan"],1,"ArcGIS dipakai untuk mengelola, menganalisis, dan memvisualisasikan data spasial."],
-["Berikut ini yang termasuk data spasial adalah ...",["Nama penduduk","Jumlah penduduk","Koordinat lokasi suatu bangunan","Tingkat pendidikan"],2,"Data spasial memuat informasi posisi/lokasi di permukaan bumi, misalnya koordinat."],
-["Dalam GIS, data vektor terdiri dari tiga jenis utama, yaitu ...",["Raster, piksel, dan grid","Point, polyline, dan polygon","Tabel, grafik, dan diagram","Layer, layout, dan simbol"],1,"Data vektor: titik (point), garis (polyline), dan area (polygon)."],
-["Data raster dalam GIS direpresentasikan dalam bentuk ...",["Garis","Titik","Poligon","Sel atau piksel"],3,"Raster tersusun dari sel/piksel yang masing-masing memiliki nilai."],
-["Apa fungsi sistem koordinat (Coordinate System) dalam pemetaan?",["Menentukan warna peta","Menentukan posisi geografis suatu objek di permukaan bumi","Mengatur ukuran legenda","Mengubah nama layer"],1,"Sistem koordinat menjadi acuan untuk menentukan posisi objek di bumi."],
-["Sistem koordinat geografis (Geographic Coordinate System) menggunakan satuan ...",["Meter","Kilometer","Derajat lintang dan bujur","Sentimeter"],2,"GCS menggunakan derajat lintang (latitude) dan bujur (longitude)."],
-["Apa fungsi proyeksi peta (Map Projection)?",["Mengubah data tabel menjadi grafik","Memindahkan representasi permukaan bumi yang melengkung ke bidang datar","Menghapus data spasial","Mengubah warna simbol peta"],1,"Proyeksi peta mentransformasikan permukaan bumi yang melengkung ke bidang datar."],
-["Format file yang umum digunakan untuk menyimpan data vektor pada ArcGIS adalah ...",["JPG","MP3","Shapefile (.shp)","DOCX"],2,"Shapefile (.shp) adalah format vektor umum di ArcGIS."],
-["Apa fungsi atribut tabel (Attribute Table) dalam ArcGIS?",["Menyimpan informasi atau karakteristik dari objek spasial","Mengatur resolusi layar","Mengubah sistem operasi","Menampilkan video peta"],0,"Attribute table menyimpan informasi/karakteristik setiap fitur spasial."],
-["Apa yang dimaksud dengan digitasi dalam pemetaan?",["Menghapus koordinat","Mengubah informasi geografis menjadi data spasial digital","Mengubah peta menjadi dokumen Word","Mengatur tampilan monitor"],1,"Digitasi: mengubah informasi geografis (mis. peta kertas) menjadi data spasial digital."],
-["Dalam ArcGIS, fungsi Buffer digunakan untuk ...",["Membuat zona dengan jarak tertentu dari suatu objek","Menghapus seluruh layer","Mengubah warna peta","Menggabungkan tabel Excel"],0,"Buffer membuat zona penyangga dengan jarak tertentu dari objek."],
-["Apa fungsi Overlay Analysis dalam GIS?",["Memperbesar ukuran peta","Menggabungkan dan menganalisis beberapa layer spasial","Menghapus atribut tabel","Mengubah format gambar"],1,"Overlay menumpangsusunkan beberapa layer untuk dianalisis bersama."],
-["Jika ingin mengetahui wilayah yang berada dalam radius 500 meter dari sekolah, analisis yang paling tepat adalah ...",["Clip","Buffer","Dissolve","Merge"],1,"Radius jarak dari suatu objek = analisis Buffer (500 m)."],
-["Apa fungsi Clip pada ArcGIS?",["Memotong data spasial berdasarkan batas wilayah tertentu","Menggabungkan seluruh atribut","Mengubah sistem koordinat","Menghapus seluruh data raster"],0,"Clip memotong data sesuai batas area tertentu."],
-["Apa fungsi Dissolve dalam pengolahan data spasial?",["Memisahkan satu poligon menjadi beberapa bagian","Menggabungkan fitur berdasarkan kesamaan nilai atribut tertentu","Mengubah data vektor menjadi raster","Membuat titik koordinat baru"],1,"Dissolve melebur fitur yang memiliki nilai atribut sama."],
-["Dalam pemetaan, skala 1:50.000 memiliki arti ...",["1 cm di peta mewakili 50.000 cm di lapangan","1 cm di peta mewakili 50.000 meter di lapangan","1 meter di peta mewakili 50.000 cm di lapangan","1 km di peta mewakili 50.000 km di lapangan"],0,"Skala 1:50.000 berarti 1 cm di peta = 50.000 cm (500 m) di lapangan."],
-["Jika jarak pada peta adalah 4 cm dengan skala 1:25.000, berapa jarak sebenarnya?",["100 meter","250 meter","1 kilometer","10 kilometer"],2,"4 cm × 25.000 = 100.000 cm = 1.000 m = 1 km."]
-];
-const $=id=>document.getElementById(id),L="ABCD";
-let cur=0,A=[],review=false;
+<div id="modal" class="modal hide"><div class="panel">
+  <h2 style="font-size:22px">Selesaikan batch?</h2><p id="mp"></p>
+  <div class="row" style="justify-content:flex-end"><button class="sec" id="mn">Kembali</button><button class="pri" id="my">Ya, selesai</button></div>
+</div></div>
 
-/* latar kontur */
+<script>
+const M=[["Pemula","Dasar GIS dan Pemetaan"],["Pemula","Data Spasial dan Atribut"],["Dasar","ArcGIS dan Pengelolaan Layer"],["Menengah","Digitasi dan Georeferencing"],["Menengah","Analisis Spasial"],["Menengah Lanjut","Sistem Koordinat dan Proyeksi"],["Lanjut","Raster, DEM, dan Penginderaan Jauh"],["Lanjut","Analisis Geospasial Kompleks"],["Mahir","Pemecahan Masalah dan Studi Kasus"],["Expert","Analisis GIS Terintegrasi dan Pengambilan Keputusan"]];
+/* format soal: "Pertanyaan|A|B|C|D" ; k = kunci jawaban berurutan */
+const B={
+1:{k:"ABCBDACBABCDABCABDAA",q:[
+"Apa kepanjangan dari GIS?|Geographic Information System|Global Information Software|General Information System|Geographic Integration Service",
+"Apa fungsi utama GIS?|Mengolah dokumen administrasi|Mengelola, menganalisis, dan menampilkan informasi geografis|Membuat animasi|Mengelola sistem keuangan",
+"Berikut ini yang termasuk data spasial adalah ...|Nama kepala desa|Jumlah penduduk|Koordinat lokasi sekolah|Tingkat pendidikan penduduk",
+"Data vektor dalam GIS terdiri dari ...|Pixel, grid, dan raster|Point, Polyline, dan Polygon|Tabel, grafik, dan diagram|Foto, video, dan audio",
+"Data raster direpresentasikan dalam bentuk ...|Garis|Titik|Poligon|Sel atau piksel",
+"Apa fungsi Attribute Table pada ArcGIS?|Menyimpan informasi atribut dari objek spasial|Mengubah sistem koordinat|Mengatur tampilan peta|Menghapus layer",
+"Sistem koordinat geografis menggunakan satuan ...|Meter|Kilometer|Derajat lintang dan bujur|Sentimeter",
+"Apa fungsi legenda pada peta?|Menunjukkan arah utara|Menjelaskan arti simbol pada peta|Menampilkan sumber data|Menentukan ukuran peta",
+"Skala peta 1:50.000 berarti ...|1 cm pada peta mewakili 50.000 cm di lapangan|1 cm pada peta mewakili 50.000 meter|1 meter pada peta mewakili 50.000 km|1 km pada peta mewakili 50.000 cm",
+"Apa kepanjangan dari GPS?|Geographic Position System|Global Positioning System|General Positioning Software|Global Projection System",
+"ArcGIS merupakan perangkat lunak yang dikembangkan oleh ...|Autodesk|Adobe|Esri|Microsoft",
+"Format file yang umum digunakan untuk menyimpan data vektor adalah ...|MP3|DOCX|JPG|Shapefile (.shp)",
+"Apa yang dimaksud dengan digitasi?|Mengubah objek geografis menjadi data spasial digital|Menghapus data koordinat|Mengubah peta menjadi video|Menggabungkan beberapa gambar",
+"Garis lintang (Latitude) digunakan untuk menentukan posisi ...|Timur dan barat|Utara dan selatan|Ketinggian|Kemiringan lereng",
+"Garis bujur (Longitude) digunakan untuk menentukan posisi ...|Utara dan selatan|Ketinggian|Timur dan barat|Kemiringan lereng",
+"Apa fungsi North Arrow pada peta?|Menunjukkan arah utara|Menunjukkan skala peta|Menampilkan legenda|Menunjukkan sumber data",
+"Apa yang dimaksud dengan layer dalam ArcGIS?|Jenis proyeksi peta|Lapisan yang berisi atau merepresentasikan data geografis|Format dokumen|Ukuran kertas peta",
+"Jika ingin menampilkan lokasi sekolah pada peta, jenis geometri yang paling tepat adalah ...|Polygon|Polyline|Raster|Point",
+"Apa tujuan utama pembuatan peta tematik?|Menampilkan informasi berdasarkan tema tertentu|Menghapus informasi geografis|Mengubah koordinat menjadi teks|Menampilkan foto tanpa informasi",
+"Komponen penting dalam layout peta adalah ...|Judul, legenda, skala, arah utara, dan sumber data|Foto pribadi dan tanda tangan|Grafik keuangan dan tabel penjualan|Nama komputer dan sistem operasi"]},
+2:{k:"ABCABCBAABAAAAAAAAAA",q:[
+"Apa perbedaan utama data spasial dan data atribut?|Data spasial menyimpan lokasi, data atribut menyimpan karakteristik objek|Data spasial hanya berupa teks|Data atribut hanya berupa koordinat|Keduanya tidak memiliki perbedaan",
+"Format GeoJSON digunakan untuk menyimpan ...|Data audio|Data geografis berbasis JSON|Dokumen PDF|Data video",
+"Dalam Shapefile, file .shx berfungsi sebagai ...|Penyimpan sistem koordinat|Penyimpan atribut|File indeks geometri|File metadata gambar",
+"File .dbf pada Shapefile digunakan untuk ...|Menyimpan atribut dalam bentuk tabel|Menyimpan koordinat GPS saja|Menyimpan gambar peta|Menyimpan proyeksi raster",
+"Apa fungsi file .prj?|Menyimpan simbol peta|Menyimpan informasi sistem koordinat atau proyeksi|Menyimpan nama pengguna|Menyimpan data foto",
+"Jika satu wilayah administrasi kecamatan digambarkan sebagai area tertutup, geometri yang digunakan adalah ...|Point|Polyline|Polygon|Multipoint",
+"Apa yang dimaksud dengan topology dalam GIS?|Pengaturan warna peta|Hubungan spasial dan aturan geometris antarobjek|Pengaturan ukuran kertas|Proses pencetakan peta",
+"Kesalahan overlap pada data poligon terjadi ketika ...|Dua poligon saling menutupi pada area yang seharusnya tidak tumpang tindih|Poligon tidak memiliki warna|Titik berada di luar peta|Layer tidak memiliki nama",
+"Apa fungsi Select By Attributes?|Memilih fitur berdasarkan kondisi nilai atribut|Memilih fitur berdasarkan jarak|Mengubah proyeksi|Menghapus semua data",
+"Apa fungsi Select By Location?|Memilih data berdasarkan nama file|Memilih fitur berdasarkan hubungan spasial dengan fitur lain|Mengurutkan tabel|Mengubah warna layer",
+"Jika ingin mencari seluruh desa yang berada di Kecamatan A, metode yang sesuai adalah ...|Select By Location atau Select By Attributes, sesuai data dan kriteria|Raster Calculator|Hillshade|Georeferencing",
+"Apa fungsi Join pada tabel GIS?|Menghubungkan tabel berdasarkan field atau kolom yang memiliki nilai pencocokan|Memotong peta|Mengubah raster menjadi vektor|Menghapus koordinat",
+"Field yang digunakan untuk menghubungkan dua tabel sebaiknya ...|Memiliki nilai yang dapat dicocokkan secara konsisten|Selalu berupa gambar|Berisi nilai acak|Memiliki warna sama",
+"Apa yang dimaksud dengan metadata dalam GIS?|Data tentang data, seperti sumber, tanggal, skala, dan sistem koordinat|Data penduduk|Simbol peta|File hasil ekspor gambar",
+"Apa fungsi geodatabase pada ArcGIS?|Menyimpan dan mengelola berbagai dataset GIS secara terstruktur|Membuat presentasi|Mengedit video|Mengatur jaringan internet",
+"Perbedaan utama Feature Class dan Shapefile adalah ...|Feature Class merupakan dataset fitur dalam geodatabase, sedangkan Shapefile merupakan format data vektor berbasis beberapa file|Shapefile hanya bisa menyimpan raster|Feature Class tidak memiliki geometri|Keduanya merupakan format gambar",
+"Apa yang dimaksud dengan NoData pada data raster?|Nilai sel yang tidak memiliki data atau tidak didefinisikan|Nilai elevasi tertinggi|Data koordinat yang salah|Data poligon kosong",
+"Resolusi spasial raster menunjukkan ...|Ukuran area permukaan bumi yang direpresentasikan oleh satu piksel|Jumlah pengguna GIS|Jumlah layer dalam peta|Ukuran legenda",
+"Jika ukuran piksel raster semakin kecil, secara umum ...|Detail spasial semakin tinggi|Detail spasial semakin rendah|Data selalu menjadi vektor|Koordinat otomatis hilang",
+"Mengapa konsistensi sistem koordinat penting ketika menggabungkan beberapa layer?|Agar posisi geografis antar-layer dapat ditampilkan dan dianalisis secara tepat|Agar warna layer sama|Agar ukuran file mengecil|Agar nama layer berubah"]}
+};
+const L="ABCD",$=id=>document.getElementById(id);
+let st={},bn=0,cur=0,A=[],review=false,Q=[];
+try{st=JSON.parse(localStorage.getItem("dm")||"{}")}catch(e){}
+function save(){try{localStorage.setItem("dm",JSON.stringify(st))}catch(e){}}
+const PASS=15;
+const best=k=>{const s=st[k];if(!s)return 0;return s.c!==undefined?s.c:Math.round((s.best||0)*(B[k]?B[k].q.length:20)/100)};
+const passed=k=>best(k)>=PASS;
+const unlocked=k=>k===1||passed(k-1);
+function show(id){["home","intro","quiz","result"].forEach(x=>$(x).classList.toggle("hide",x!==id));scrollTo(0,0)}
+
+/* latar kontur dan peta */
 (function(){
- const svg=$("topo"),ns="http://www.w3.org/2000/svg";
- const C=[[230,200,230,1],[900,170,200,2],[620,560,300,3],[1050,650,160,4],[120,650,170,5]];
  let h="";
- C.forEach(([cx,cy,R,s])=>{
+ [[230,200,230,1],[900,170,200,2],[620,560,300,3],[1050,650,160,4],[120,650,170,5]].forEach(([cx,cy,R,s])=>{
   for(let i=1;i<=14;i++){
    const r=R*i/14*1.5;let d="";
-   for(let a=0;a<=64;a++){
-    const t=a/64*Math.PI*2;
-    const k=1+.14*Math.sin(3*t+s)+.09*Math.sin(5*t+s*2)+.05*Math.sin(8*t+i*.15);
-    const x=cx+Math.cos(t)*r*k,y=cy+Math.sin(t)*r*k*.8;
-    d+=(a?"L":"M")+x.toFixed(1)+" "+y.toFixed(1);
-   }
-   h+=`<path d="${d}Z" fill="none" stroke="var(--cont)" stroke-opacity="${i%5==0?.5:.22}" stroke-width="${i%5==0?1.8:1}"/>`;
+   for(let a=0;a<=64;a++){const t=a/64*Math.PI*2,k=1+.14*Math.sin(3*t+s)+.09*Math.sin(5*t+s*2)+.05*Math.sin(8*t+i*.15);d+=(a?"L":"M")+(cx+Math.cos(t)*r*k).toFixed(1)+" "+(cy+Math.sin(t)*r*k*.8).toFixed(1)}
+   h+=`<path d="${d}Z" fill="none" stroke="var(--cont)" stroke-opacity="${i%5==0?.55:.25}" stroke-width="${i%5==0?1.8:1}"/>`;
   }
-  h+=`<circle cx="${cx}" cy="${cy}" r="4" fill="var(--ac)"/><path d="M${cx-10} ${cy}h20M${cx} ${cy-10}v20" stroke="var(--ac)" stroke-width="1.2"/>`;
-  h+=`<text x="${cx+10}" y="${cy-8}" fill="var(--mut)" font-size="11" font-family="monospace">${(1000+s*137)} m</text>`;
+  h+=`<circle cx="${cx}" cy="${cy}" r="4" fill="var(--gold)"/><text x="${cx+10}" y="${cy-8}" fill="var(--mut)" font-size="11" font-family="monospace">${1000+s*137} m</text>`;
  });
- const pts=[[80,80],[1080,90],[600,60],[1120,420],[60,380],[640,760]];
- pts.forEach(([x,y],i)=>{h+=`<path d="M${x-6} ${y}h12M${x} ${y-6}v12" stroke="var(--mut)" stroke-opacity=".6"/><text x="${x+8}" y="${y-6}" fill="var(--mut)" fill-opacity=".7" font-size="10" font-family="monospace">${(6+i*0.4).toFixed(1)}°S ${(107+i*.3).toFixed(1)}°E</text>`});
- h+=`<path d="M-20 470C150 430 260 520 420 470S640 380 760 430 980 520 1220 440" fill="none" stroke="var(--cont)" stroke-opacity=".35" stroke-width="9" stroke-linecap="round"/><path d="M-20 470C150 430 260 520 420 470S640 380 760 430 980 520 1220 440" fill="none" stroke="var(--bg)" stroke-opacity=".6" stroke-width="3"/>`;
- ["M0 240L300 300 560 250 820 330 1200 280","M200 0L260 260 330 520 300 800","M880 0L860 300 920 560 1000 800","M0 640L400 600 700 680 1200 620"].forEach(d=>{h+=`<path d="${d}" fill="none" stroke="var(--mut)" stroke-opacity=".5" stroke-width="3"/><path d="${d}" fill="none" stroke="var(--card)" stroke-width="1" stroke-dasharray="8 6"/>`});
- for(let i=0;i<46;i++){const x=(i*173)%1150+20,y=(i*97)%720+30;h+=`<rect x="${x}" y="${y}" width="${14+(i*7)%22}" height="${10+(i*11)%16}" fill="var(--cont)" fill-opacity=".12" stroke="var(--cont)" stroke-opacity=".3"/>`}
- h+=`<g fill="var(--mut)" font-size="12" font-family="sans-serif" fill-opacity=".8"><text x="60" y="232">Jl. Raya Utama</text><text x="640" y="410" font-style="italic">S. Cikapundung</text><text x="900" y="610">Jl. Kontur</text></g>`;
- svg.innerHTML=h;
+ const rv="M-20 470C150 430 260 520 420 470S640 380 760 430 980 520 1220 440";
+ h+=`<path d="${rv}" fill="none" stroke="var(--cont)" stroke-opacity=".3" stroke-width="9" stroke-linecap="round"/>`;
+ ["M0 240L300 300 560 250 820 330 1200 280","M200 0L260 260 330 520 300 800","M880 0L860 300 920 560 1000 800"].forEach(d=>{h+=`<path d="${d}" fill="none" stroke="var(--mut)" stroke-opacity=".45" stroke-width="2.5" stroke-dasharray="10 6"/>`});
+ for(let i=0;i<40;i++){h+=`<rect x="${(i*173)%1150+20}" y="${(i*97)%720+30}" width="${14+(i*7)%22}" height="${10+(i*11)%16}" fill="var(--cont)" fill-opacity=".1" stroke="var(--cont)" stroke-opacity=".25"/>`}
+ [[80,80],[1080,90],[600,60],[1120,420],[60,380],[640,760]].forEach(([x,y],i)=>{h+=`<path d="M${x-6} ${y}h12M${x} ${y-6}v12" stroke="var(--mut)" stroke-opacity=".6"/><text x="${x+8}" y="${y-6}" fill="var(--mut)" fill-opacity=".7" font-size="10" font-family="monospace">${(6+i*.4).toFixed(1)}°S ${(107+i*.3).toFixed(1)}°E</text>`});
+ $("topo").innerHTML=h;
 })();
 
-function show(id){["start","quiz","result"].forEach(x=>$(x).classList.toggle("hide",x!==id));scrollTo(0,0)}
-function start(){cur=0;A=Array(D.length).fill(null);review=false;show("quiz");render()}
+function home(){
+ const done=M.filter((m,i)=>passed(i+1)).length;
+ $("pt").textContent=`${done} dari 10 batch selesai`;
+ $("pb").style.width=done/10*100+"%";
+ $("cards").innerHTML=M.map((m,i)=>{
+  const k=i+1,has=!!B[k],s=st[k];
+  return `<button class="bc" data-b="${k}" ${has&&unlocked(k)?"":"disabled"}>${s&&s.done?`<span class="badge">${passed(k)?"✓ ":""}${best(k)}/${B[k].q.length}</span>`:""}<div class="no">${String(k).padStart(2,"0")}</div><span class="lv">${m[0]}</span><h4>${m[1]}</h4><small>${has&&!unlocked(k)?"🔒 Terkunci · benar minimal 15 di Batch "+(k-1):has?B[k].q.length+" soal · pilihan ganda"+(s?` · terbaik ${best(k)}/${B[k].q.length}`:""):"Segera hadir"}</small></button>`}).join("");
+ show("home");
+}
+$("cards").onclick=e=>{const b=e.target.closest(".bc");if(!b||b.disabled)return;intro(+b.dataset.b)};
+function intro(k){
+ bn=k;const m=M[k-1];
+ $("i-b").textContent=`Batch ${k} · Level ${k}`;
+ $("i-t").textContent=m[1];
+ $("i-p").textContent=`Tingkat ${m[0]}. Latihan ini berisi ${B[k].q.length} soal pilihan ganda A–D.`;
+ $("i-c").innerHTML=`<span class="chip">${m[0]}</span><span class="chip">${B[k].q.length} soal</span><span class="chip">Lulus: benar minimal 15</span>${st[k]?`<span class="chip">Nilai terbaik ${best(k)}/${B[k].q.length}</span>`:""}`;
+ show("intro");
+}
+function start(){
+ Q=B[bn].q.map((s,i)=>{const p=s.split("|");return{q:p[0],o:p.slice(1),a:L.indexOf(B[bn].k[i])}});
+ cur=0;A=Array(Q.length).fill(null);review=false;show("quiz");render();
+}
 function render(){
- const d=D[cur];
- $("cnt").textContent=`Soal ${cur+1} dari ${D.length}`;
- const n=A.filter(x=>x!==null).length;
- $("ans").textContent=review?"Pembahasan":`Terjawab ${n}/${D.length}`;
- $("pb").style.width=((cur+1)/D.length*100)+"%";
- $("sect").textContent=cur<10?S1:S2;
- $("q").textContent=`${cur+1}. ${d[0]}`;
- $("opts").innerHTML=d[1].map((t,i)=>{
+ const d=Q[cur];
+ $("cnt").textContent=`Soal ${cur+1} dari ${Q.length}`;
+ $("ans").textContent=review?"Jawaban":`Terjawab ${A.filter(x=>x!==null).length}/${Q.length}`;
+ $("qb").style.width=(cur+1)/Q.length*100+"%";
+ $("bt").textContent=`Batch ${bn} · ${M[bn-1][1]}`;
+ $("q").textContent=`${cur+1}. ${d.q}`;
+ $("opts").innerHTML=d.o.map((t,i)=>{
   let c="opt";
-  if(review){if(i===d[2])c+=" ok";else if(A[cur]===i)c+=" bad"}
-  else if(A[cur]===i)c+=" sel";
-  return `<button class="${c}" data-i="${i}"><span class="l">${L[i]}</span><span>${t}</span></button>`}).join("")
-  +(review?`<div class="exp"><b>${A[cur]===d[2]?"Benar.":A[cur]===null?"Tidak dijawab.":"Kurang tepat."}</b> Jawaban: ${L[d[2]]}. ${d[3]}</div>`:"");
+  if(review){if(i===d.a)c+=" ok";else if(A[cur]===i)c+=" bad"}else if(A[cur]===i)c+=" sel";
+  return `<button class="${c}" data-i="${i}"><span class="l">${L[i]}</span><span>${t}</span></button>`}).join("");
  $("prev").disabled=cur===0;
- const last=cur===D.length-1;
+ const last=cur===Q.length-1;
  $("next").textContent=review?(last?"Ke Hasil":"Selanjutnya →"):(last?"Selesai ✓":"Selanjutnya →");
- $("nums").innerHTML=D.map((_,i)=>{
+ $("nums").innerHTML=Q.map((x,i)=>{
   let c=i===cur?"cur":"";
-  if(review)c+=A[i]===D[i][2]?" ok":" bad";else if(A[i]!==null)c+=" done";
+  if(review)c+=A[i]===x.a?" ok":" bad";else if(A[i]!==null)c+=" done";
   return `<button class="${c}" data-n="${i}">${i+1}</button>`}).join("");
 }
 $("opts").onclick=e=>{const b=e.target.closest(".opt");if(!b||review)return;A[cur]=+b.dataset.i;render()};
 $("nums").onclick=e=>{const b=e.target.closest("button");if(!b)return;cur=+b.dataset.n;render()};
 $("prev").onclick=()=>{if(cur>0){cur--;render()}};
 $("next").onclick=()=>{
- if(cur<D.length-1){cur++;render();return}
- if(review){result();return}
+ if(cur<Q.length-1){cur++;render();return}
+ if(review){result(false);return}
  const un=A.filter(x=>x===null).length;
  $("mp").textContent=un?`Masih ada ${un} soal yang belum dijawab. Yakin ingin menyelesaikan?`:"Semua soal sudah dijawab. Lihat hasilmu sekarang?";
  $("modal").classList.remove("hide");
 };
 $("mn").onclick=()=>$("modal").classList.add("hide");
-$("my").onclick=()=>{$("modal").classList.add("hide");result()};
-function result(){
- const ok=A.filter((a,i)=>a===D[i][2]).length,un=A.filter(a=>a===null).length,no=D.length-ok-un;
- const p=Math.round(ok/D.length*100);
+$("my").onclick=()=>{$("modal").classList.add("hide");result(true)};
+function result(saveIt){
+ const ok=A.filter((a,i)=>a===Q[i].a).length,un=A.filter(a=>a===null).length,no=Q.length-ok-un,p=Math.round(ok/Q.length*100);
+ if(saveIt){const s=st[bn]||{best:0};st[bn]={best:Math.max(s.best||0,p),c:Math.max(best(bn),ok),done:true};save()}
+ $("r-b").textContent=`Batch ${bn} · ${M[bn-1][1]}`;
  $("ring").style.setProperty("--p",p);$("sc").textContent=p;
  $("s1").textContent=`✓ Benar ${ok}`;$("s2").textContent=`✗ Salah ${no}`;$("s3").textContent=`– Kosong ${un}`;
- $("msg").textContent=p>=80?"Luar biasa! Pemahaman GIS-mu sudah kuat.":p>=60?"Bagus! Pelajari lagi soal yang salah lewat pembahasan.":"Tetap semangat! Coba baca pembahasan lalu ulangi latihan.";
+ $("msg").textContent=p>=80?"Luar biasa! Pemahamanmu sudah kuat.":p>=60?"Bagus! Periksa lagi soal yang salah lalu coba ulangi.":"Tetap semangat! Lihat jawaban yang benar lalu ulangi latihan.";
+ $("msg").textContent=ok>=PASS?(B[bn+1]?"Lulus! Batch berikutnya sudah terbuka.":"Lulus! Kamu sudah menyelesaikan semua batch yang tersedia."):`Belum lulus: butuh minimal ${PASS} jawaban benar, kamu baru ${ok}. Lihat jawaban lalu ulangi.`;
+ $("nxt").classList.toggle("hide",!(B[bn+1]&&passed(bn)));
  show("result");
 }
 $("rev").onclick=()=>{review=true;cur=0;show("quiz");render()};
 $("again").onclick=start;
-$("go").onclick=start;
+$("nxt").onclick=()=>intro(bn+1);
+$("hm").onclick=home;
+$("home-btn").onclick=home;
+$("i-go").onclick=start;
+$("i-back").onclick=home;
+home();
 </script>
 </body>
 </html>
