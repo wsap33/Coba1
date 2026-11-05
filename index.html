@@ -140,7 +140,7 @@ let cur=0,A=[],review=false;
     d+=(a?"L":"M")+x.toFixed(1)+" "+y.toFixed(1);
    }
    h+=`<path d="${d}Z" fill="none" stroke="var(--cont)" stroke-opacity="${i%5==0?.5:.22}" stroke-width="${i%5==0?1.8:1}"/>`;
-  });
+  }
   h+=`<circle cx="${cx}" cy="${cy}" r="4" fill="var(--ac)"/><path d="M${cx-10} ${cy}h20M${cx} ${cy-10}v20" stroke="var(--ac)" stroke-width="1.2"/>`;
   h+=`<text x="${cx+10}" y="${cy-8}" fill="var(--mut)" font-size="11" font-family="monospace">${(1000+s*137)} m</text>`;
  });
